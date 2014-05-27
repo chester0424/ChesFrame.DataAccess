@@ -16,6 +16,11 @@ namespace System.ChesFrame.Utility.DataAccess
 {
     public static class ObjectExtension4Clone
     {
+        /// <summary>
+        /// 对象深拷贝：通过赋值属性的方式
+        /// </summary>
+        /// <param name="objSource"></param>
+        /// <returns></returns>
         public static object CloneObject(this object objSource)
         {
             //Get the type of source object and create a new instance of that type

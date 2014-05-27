@@ -88,6 +88,7 @@ namespace System.ChesFrame.Utility.DataAccess.Test
         public void 多条件测试()
         {
             LoadConfig();
+
             DbCommand dbcommand = DbCommandManager.GetDbCommand("PersonQuery7");
             new SqlBuilder(dbcommand)
                 .AddCondition(ConditionConnectionType.And, "name", OperationType.Equal, "@name", Data.DbType.String, 20, "张三")

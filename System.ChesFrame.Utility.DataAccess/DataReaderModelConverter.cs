@@ -10,6 +10,12 @@ namespace System.ChesFrame.Utility.DataAccess
 {
     public class DataReaderModelConverter
     {
+        /// <summary>
+        /// Reader读取数据转换成实体
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dr"></param>
+        /// <returns></returns>
         public static T ReaderToModel<T>(IDataReader dr)
         {
             try
@@ -45,6 +51,12 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// reader读取数据并抓换成实体对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dr"></param>
+        /// <returns></returns>
         public static List<T> ReaderToList<T>(IDataReader dr)
         {
             using (dr)

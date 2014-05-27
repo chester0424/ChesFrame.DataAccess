@@ -19,6 +19,11 @@ namespace System.ChesFrame.Utility.DataAccess
             this.dbCommand = dbCommand;
         }
 
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="pageInfo"></param>
+        /// <returns></returns>
         public SqlBuilder AddPageInfo(PageInfo pageInfo)
         {
             var commandText = dbCommand.CommandText;
@@ -68,12 +73,28 @@ namespace System.ChesFrame.Utility.DataAccess
             return this;
         }
 
+        /// <summary>
+        /// 添加条件
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
         public SqlBuilder AddCondition(SqlCondition condition)
         {
             conditions.Add(condition);
             return this;
         }
 
+        /// <summary>
+        /// 添加条件
+        /// </summary>
+        /// <param name="conditionConnectionType"></param>
+        /// <param name="sql"></param>
+        /// <param name="operationType"></param>
+        /// <param name="parameterName"></param>
+        /// <param name="dbType"></param>
+        /// <param name="size"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public SqlBuilder AddCondition(ConditionConnectionType conditionConnectionType, string sql,
             OperationType operationType, string parameterName, DbType dbType, int size, object value)
         {
@@ -239,6 +260,12 @@ namespace System.ChesFrame.Utility.DataAccess
             return this;
         }
 
+        /// <summary>
+        /// 替换脚本中的指定字符串
+        /// </summary>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        /// <returns></returns>
         public SqlBuilder SqlReplace(string oldValue, string newValue)
         {
             dbCommand.CommandText = dbCommand.CommandText.Replace(oldValue, newValue);
@@ -261,6 +288,9 @@ namespace System.ChesFrame.Utility.DataAccess
         Like
     }
 
+    /// <summary>
+    /// 方法扩展
+    /// </summary>
     public static class OperationTypeExtend
     {
         /// <summary>
@@ -296,6 +326,11 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// 条件连接类型方法扩展
+        /// </summary>
+        /// <param name="conditionConnectionType"></param>
+        /// <returns></returns>
         public static string Tostr(this ConditionConnectionType conditionConnectionType)
         {
             switch (conditionConnectionType)
@@ -309,20 +344,14 @@ namespace System.ChesFrame.Utility.DataAccess
         }
     }
 
+    /// <summary>
+    /// 条件连接符
+    /// </summary>
     public enum ConditionConnectionType
     {
         And,
         Or
     }
-
-    //public struct OperationSqlConditon
-    //{
-    //    public ConditionConnectionType ConditionConnectionType { get; set; }
-
-    //    public SqlCondition SqlCondition { get; set; }
-
-    //    public List<OperationSqlConditon> OperationSqlConditonList { get; set; }
-    //}
 
     public struct SqlCondition
     {

@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace System.ChesFrame.Utility.DataAccess
 {
+    /// <summary>
+    /// DbCommand的扩展
+    /// </summary>
     public static class DbCommandExtend
     {
+        /// <summary>
+        /// 执行并返回第一行第一列的值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dbCommand"></param>
+        /// <returns></returns>
         public static T ExecuteScalar<T>(this DbCommand dbCommand)
         {
             using (var conn = dbCommand.Connection)
@@ -24,6 +33,12 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// 执行并返回实体
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dbCommand"></param>
+        /// <returns></returns>
         public static T ExecuteEntity<T>(this DbCommand dbCommand) where T : new()
         {
             using (var conn = dbCommand.Connection)
@@ -36,6 +51,12 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// 执行并返回实体列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dbCommand"></param>
+        /// <returns></returns>
         public static List<T> ExecuteEntityList<T>(this DbCommand dbCommand) where T : new()
         {
             using (var conn = dbCommand.Connection)
@@ -48,6 +69,11 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// 执行并返回数据集
+        /// </summary>
+        /// <param name="dbCommand"></param>
+        /// <returns></returns>
         public static DataSet ExecuteDataSet(this DbCommand dbCommand)
         {
             using (var conn = dbCommand.Connection)
@@ -79,6 +105,11 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// 执行并返回数据表
+        /// </summary>
+        /// <param name="dbCommand"></param>
+        /// <returns></returns>
         public static DataTable ExecuteDataTable(this DbCommand dbCommand)
         {
             using (var conn = dbCommand.Connection)
@@ -102,6 +133,11 @@ namespace System.ChesFrame.Utility.DataAccess
             }
         }
 
+        /// <summary>
+        /// 获取送的行数（只针对分页查询后获取总行数）
+        /// </summary>
+        /// <param name="dbCommand"></param>
+        /// <returns></returns>
         public static int? GetTotalCount(this DbCommand dbCommand)
         {
             if (dbCommand.Parameters != null
