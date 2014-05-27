@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace System.ChesFrame.Utility.ObjectBuilder
 {
+    /// <summary>
+    /// 对象创建
+    /// </summary>
     public static partial class ObjectBuilder
     {
         /// <summary>
